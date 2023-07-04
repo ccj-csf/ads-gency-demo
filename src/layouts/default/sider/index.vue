@@ -29,7 +29,7 @@
       </a-menu>
     </div>
     <footer class="hidden md:block text-white px-4" v-if="!getCollapsed">
-      <a class="mb-4 block cursor-pointer" href="https://google.com" target="_block">
+      <a class="mb-4 block cursor-pointer" href=" " target="_block">
         <img class="w-full rounded-md" src="https://picsum.photos/428/190" alt="Adv.png" >
       </a>
       <div class="flex gap-4 mb-4 cursor-pointer" @click="handleSignOut">
@@ -43,7 +43,7 @@
   </aside>
 </template>
 <script lang="tsx">
-  import { defineComponent, ref } from 'vue'
+  import { defineComponent, ref, watch, onMounted } from 'vue'
   import { useRouter } from 'vue-router'
 
   import { UserOutlined, LogoutOutlined } from '@ant-design/icons-vue'
@@ -65,10 +65,10 @@
 
     setup() {
       const { getCollapsed } = useMenuSetting()
+      const selectedMenuKeys = ref<string[]>(['Home'])
 
       const router = useRouter()
 
-      console.log(SliderRoutes, 'SliderRoutes')
       const handleSignOut = (): void => {
         // todo remove cookies and login out
       }
@@ -78,6 +78,18 @@
           name: key,
         })
       }
+
+      watch(
+        () => router.currentRoute.value.name,
+        (newRouteName: string) => {
+          console.log(newRouteName, 'newRouteName')
+          selectedMenuKeys.value = [newRouteName]
+        },
+      )
+      onMounted(() => {
+        selectedMenuKeys.value = [router.currentRoute.value.name as string]
+      })
+
       return {
         // advImg: advImage,
         sliderRoutes: ref(SliderRoutes),
@@ -86,7 +98,7 @@
         hanldeSelectMenu,
 
         getCollapsed,
-        selectedKeys: ref<string[]>(['Home']),
+        selectedKeys: selectedMenuKeys,
       }
     },
   })
