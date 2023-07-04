@@ -50,7 +50,7 @@ export const YourProjects: AppRouteRecordRaw = {
 export const Planning: AppRouteRecordRaw = {
   path: '/planning',
   name: 'Planning',
-  component: () => import('@/views/Planning/index.vue'),
+  component: () => import('@/views/planning/index.vue'),
   meta: {
     title: 'Planning',
     icon: 'CalendarOutlined',
