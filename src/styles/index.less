@@ -1,0 +1,35 @@
+@import './variables.less';
+@import './util.less';
+
+#app {
+  height: 100vh;
+  background: white;
+}
+
+.hover-gradient-theme-right {
+  &:hover {
+    background: linear-gradient(to right, #555cf2,#a72cf9);
+  }
+}
+.bg-gradient-theme-right {
+  background: linear-gradient(to right, #555cf2,#a72cf9);
+  color: white;
+}
+
+.text-gradient-theme-bottom {
+  background-image: linear-gradient(to bottom, #a72cf9, #555cf2);
+  background-clip: text;
+  color: transparent;
+}
+
+// todo temporary plan
+.ant-menu-submenu-popup .ant-menu-sub {
+  padding: 16px 8px;
+}
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background:linear-gradient(to right, #555cf2,#a72cf9) !important;
+}
+
+.ant-menu-vertical.ant-menu-sub > .ant-menu-item {
+  border-radius: 8px;
+}
