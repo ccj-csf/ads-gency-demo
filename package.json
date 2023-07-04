@@ -9,6 +9,7 @@
     "bootstrap": "yarn install",
     "serve": "npm run dev",
     "dev": "vite",
+    "build": "vite build",
     "build:prod": "cross-env NODE_ENV=production vite build && esno ./build/script/postBuild.ts",
     "build:uat": "cross-env vite build --mode uat && esno ./build/script/postBuild.ts",
     "build:no-cache": "yarn clean:cache && npm run build",
